@@ -13,7 +13,10 @@ html, body {
   color: #fff;
 }
 
-
 .video-wrapper {
   border-radius: 0.5rem;
+}
+
+svg {
+  @apply w-full h-full;
 }
