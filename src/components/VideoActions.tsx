@@ -4,7 +4,7 @@ import MessageIcon from '../assets/message.svg?react'
 import ShareIcon from '../assets/share.svg?react'
 import MoreIcon from '../assets/more.svg?react'
 
-// TODO: modify action's content for different video
+// FUTURE: Modify real content for each action
 const ACTIONS = [
   {
     name: 'thumbs-up',
@@ -38,7 +38,6 @@ const ACTIONS = [
   },
 ]
 
-
 export default function VideoActions() {
   return (
     <section>
@@ -46,7 +45,7 @@ export default function VideoActions() {
         <ul className='space-y-4'>
           {
             ACTIONS.map((action) => (
-              <li className='relative group'>
+              <li key={action.name} className='relative group'>
                 <button className="flex items-center justify-center text-white bg-gray-700 hover:bg-gray-500 w-12 h-12 rounded-full">
                   <div className='w-6 h-6'>{action.icon}</div>
                 </button>
