@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player'
-import { useEffect, useState, memo } from "react"
+import { useEffect, useState, memo, useMemo } from "react"
 
 import PlayIcon from '../assets/play.svg?react'
 import PauseIcon from '../assets/pause.svg?react'
@@ -8,31 +8,46 @@ import VolumeOn from '../assets/volume-on.svg?react'
 import VolumeOff from '../assets/volume-off.svg?react'
 import VideoActions from "./VideoActions"
 
+
+enum VOLUME {
+  ON = 0.5,
+  OFF = 0
+}
+
+enum STATE {
+  PLAYING,
+  PAUSED
+}
+
 const VideoPlayer = memo(
   ({ id, thumbnail, isActive }: { id: string, thumbnail: string, isActive: boolean }) => {  
-    const [isPlaying, setIsPlaying] = useState(true)
-    const [volume, setVolume] = useState(0)
+    const [state, setState] = useState(STATE.PAUSED)
+    const [volume, setVolume] = useState(VOLUME.ON)
 
     const [currentTime, setCurrentTime] = useState(0)
+    const [showControls, setShowControls] = useState(false)
 
     useEffect(() => {      
       if(!isActive) {
         return 
       } 
       
-      setIsPlaying(true)
+      setState(STATE.PLAYING)
     }, [isActive])
+
+    const isPlaying = useMemo(() => state === STATE.PLAYING, [state])
     
-    function togglePlaying() {
-      setIsPlaying((prev) => !prev)
+    function toggleState() {
+      setState((prev) => prev === STATE.PLAYING ? STATE.PAUSED : STATE.PLAYING)
     }
 
     function toggleVolume() {
-      setVolume((prev) => !prev ? 1 : 0)
+      setVolume((prev) => !prev ? VOLUME.ON : VOLUME.OFF)
     }  
 
     function ready() {
       console.log('video is ready')
+      setShowControls(true)
     }
     
     return (
@@ -57,8 +72,8 @@ const VideoPlayer = memo(
                     loop={true}
                     url={`https://www.youtube.com/watch?v=${id}`}
                     onReady={ready} 
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
+                    onPlay={() => setState(STATE.PLAYING)}
+                    onPause={() => setState(STATE.PAUSED)}
                     onProgress={({ playedSeconds }) => {
                       setCurrentTime(Math.floor(playedSeconds))
                     }} 
@@ -67,10 +82,10 @@ const VideoPlayer = memo(
                 )
               }
             </div>
-            <nav className="opacity-0 group-hover:opacity-100 p-4 pt-8 absolute bottom-0 w-full text-white bg-gradient-to-t from-black/70 to-transparent rounded-lg">
+            {showControls && <nav className="opacity-0 group-hover:opacity-100 p-4 pt-8 absolute bottom-0 w-full text-white bg-gradient-to-t from-black/70 to-transparent rounded-lg">
               <ul className="flex justify-between">
                 <li>
-                  <button className="w-6 h-6" onClick={togglePlaying}>
+                  <button className="w-6 h-6" onClick={toggleState}>
                     {isPlaying ? <PauseIcon/> : <PlayIcon />}
                   </button>
                 </li>
@@ -80,7 +95,7 @@ const VideoPlayer = memo(
                   </button>
                 </li>
               </ul>
-            </nav>
+            </nav>}
           </div>
           </div>
         <div>
