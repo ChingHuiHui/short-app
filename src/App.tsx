@@ -1,7 +1,7 @@
 import { useState, Suspense } from 'react'
 import './App.css'
 import VideoList from './components/VideoList'
-import useDarkMode from './hooks/useDarkmode'
+import useDarkMode from './hooks/useDarkMode'
 
 export default function App() {
   useDarkMode()
