@@ -6,46 +6,45 @@ export default function VideoList() {
   const { activeId, setActiveId, displayVideos, load } = useVideos()
 
   const list = useRef<{[key: string]: HTMLDivElement}>({})
-  useEffect(() => {
-    function observeActiveVideo() {
-      const options =  {
-        rootMargin: "0px",
-        threshold: 0.75
-      }
-  
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if(!entry.isIntersecting) return
-  
-            const id = (entry.target as HTMLDivElement).dataset.id as string
 
-            changeActiveVideo(id)
-          });
-      }, options);
-  
-      Object.entries(list.current).forEach(([, section]) => {
-        observer.observe(section);
-      });
+  useEffect(() => {
+    const options =  {
+      rootMargin: "0px",
+      threshold: 0.75
     }
 
-    observeActiveVideo()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if(!entry.isIntersecting) return
+
+          const id = (entry.target as HTMLDivElement).dataset.id as string
+
+          setActiveId(id)
+        });
+    }, options);
+
+    Object.entries(list.current).forEach(([, section]) => {
+      observer.observe(section);
+    });
+
+
+    return () => {
+      observer && observer.disconnect()
+    }
   }, [displayVideos])
 
   const loadMoreTarget = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     function observeLoadMoreTarget() {
       const loadObserver = new IntersectionObserver(
         (entries) => {
           if(!entries[0].isIntersecting) return
-  
-          // FIXME: load too many times
+            
           load()
         },
-        {
-          rootMargin: "0px",
-          threshold: 0.75
-        }
+        { threshold: 0.5 }
       )
   
       loadObserver.observe(loadMoreTarget.current as HTMLDivElement)
@@ -67,14 +66,10 @@ export default function VideoList() {
                 id={short.videoId} 
                 isActive={activeId === short.videoId}
               /> 
-              {short.videoId}
             </div>
           </section>
       ))}
-          ))
-        }
-        <div ref={loadMoreTarget} className='h-[10rem] bg-black'></div>
-      </main>
+      <div ref={loadMoreTarget} className='bg-red-100 h-[100px]'></div>
     </main>
   )
 }
