@@ -1,5 +1,5 @@
 import { useEffect, useRef} from 'react'
-import { useVideos } from '../useVideos'
+import { useVideos } from '../hooks/useVideos'
 import VideoPlayer from './VideoPlayer'
 
 export default function VideoList() {
@@ -69,6 +69,7 @@ export default function VideoList() {
             </div>
           </section>
       ))}
+      {/* FIXME: load times */}
       <div ref={loadMoreTarget} className='bg-red-100 h-[100px]'></div>
     </main>
   )

@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import { useState, useMemo } from 'react'
-import { useVideosStore } from './stores/useVideosStore'
+import { useVideosStore } from '../stores/useVideosStore'
 import { useSearchParams } from 'react-router-dom'
 
 const LOAD_MORE_PER_TIME = 10
