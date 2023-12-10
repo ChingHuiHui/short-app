@@ -1,12 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef} from 'react'
 import { useVideos } from '../useVideos'
-
 import VideoPlayer from './VideoPlayer'
 
 export default function VideoList() {
-  const { displayVideos, load, activeId, changeActiveVideo } = useVideos()
-
-  console.log('render VideoList')
+  const { activeId, setActiveId, displayVideos, load } = useVideos()
 
   const list = useRef<{[key: string]: HTMLDivElement}>({})
   useEffect(() => {
@@ -57,25 +54,27 @@ export default function VideoList() {
     observeLoadMoreTarget()
   })
 
-  // TODO: store /resume the currentTime of the video
   return (
-      <main> 
-        {
-          displayVideos.map((short) => (
-            <section key={short.videoId} className="section">
-              <div 
-                ref={ref => list.current[short.videoId] = ref as HTMLDivElement} 
-                data-id={short.videoId}>
-                <VideoPlayer 
-                  thumbnail={short.thumbnails[0].url} 
-                  id={short.videoId} 
-                  isActive={activeId === short.videoId}
-                /> 
-              </div>
+    <main> 
+      {
+        displayVideos.map((short) => (
+          <section key={short.videoId} className="section">
+            <div 
+              ref={ref => list.current[short.videoId] = ref as HTMLDivElement} 
+              data-id={short.videoId}>
+              <VideoPlayer 
+                thumbnail={short.thumbnails[0].url} 
+                id={short.videoId} 
+                isActive={activeId === short.videoId}
+              /> 
+              {short.videoId}
+            </div>
           </section>
+      ))}
           ))
         }
         <div ref={loadMoreTarget} className='h-[10rem] bg-black'></div>
       </main>
+    </main>
   )
 }

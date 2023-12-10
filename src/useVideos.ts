@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import { useState, useMemo } from 'react'
 import { useVideosStore } from './stores/useVideosStore'
+import { useSearchParams } from 'react-router-dom'
 
 export function useVideos() {
   const fetcher = useVideosStore((state) => state.fetch)
@@ -21,8 +22,11 @@ export function useVideos() {
     })
   }
 
-  const activeId = useVideosStore((state) => state.activeId)
-  const changeActiveVideo = useVideosStore((state) => state.changeActiveVideo)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeId = useMemo(() => searchParams.get('id'), [searchParams])
+  function setActiveId(id: string) {
+    setSearchParams({ id })
+  }
 
-  return { displayVideos, load, activeId, changeActiveVideo }
+  return { displayVideos, load, activeId, setActiveId }
 }
