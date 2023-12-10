@@ -5,7 +5,7 @@ main {
 }
 
 .section {
-  @apply bg-black flex justify-center items-center;
+  @apply dark:bg-black flex justify-center items-center;
 
   scroll-snap-align: center;
   scroll-snap-stop: always;
