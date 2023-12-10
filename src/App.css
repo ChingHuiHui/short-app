@@ -1,0 +1,12 @@
+main {
+  height: 100dvh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.section {
+  @apply bg-black flex justify-center items-center;
+
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
