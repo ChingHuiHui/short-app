@@ -8,13 +8,13 @@ import VolumeOn from '../assets/volume-on.svg?react'
 import VolumeOff from '../assets/volume-off.svg?react'
 import VideoActions from "./VideoActions"
 
-export default memo(
-  function VideoPlayer({ id, thumbnail, isActive }: { id: string, thumbnail: string, isActive:boolean}) {  
+const VideoPlayer = memo(
+  ({ id, thumbnail, isActive }: { id: string, thumbnail: string, isActive: boolean }) => {  
     const [isPlaying, setIsPlaying] = useState(true)
     const [volume, setVolume] = useState(0)
 
-    console.log('render VideoPlayer')
-    
+    const [currentTime, setCurrentTime] = useState(0)
+
     useEffect(() => {      
       if(!isActive) {
         return 
@@ -36,8 +36,6 @@ export default memo(
     }
     
     return (
-      // TODO: Customize the video player (remove the title)
-      // TODO: When the video is end then play the next video
       <div className="flex items-end mb-10 space-x-4">
         <div className='group'>
           <div className="aspect-[4/7] w-[20rem] relative rounded-lg overflow-hidden">
@@ -50,16 +48,21 @@ export default memo(
                     volume={volume}
                     config={{
                       youtube: {
-                        playerVars: { showinfo: 0, rel: 0, start: 0 }
+                        playerVars: { showinfo: 0, rel: 0, start: currentTime }
                       },
                     }}
                     controls={false}
                     width='100%'
                     height='100%'
+                    loop={true}
                     url={`https://www.youtube.com/watch?v=${id}`}
                     onReady={ready} 
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
+                    onProgress={({ playedSeconds }) => {
+                      setCurrentTime(Math.floor(playedSeconds))
+                    }} 
+                    onEnded={() => setCurrentTime(0)}
                   />
                 )
               }
@@ -87,3 +90,4 @@ export default memo(
   )
 })
 
+export default VideoPlayer
