@@ -28,7 +28,7 @@ export function useVideos() {
     setSearchParams({ id })
   }
 
-  return { displayVideos, load, activeId, setActiveId, useFetchVideos }
+  return { displayVideos, load, activeId, setActiveId, useFetchVideos, videos }
 }
 
 export function useFetchVideos() {

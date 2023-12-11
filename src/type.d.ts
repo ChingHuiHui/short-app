@@ -7,3 +7,8 @@ export type Short = {
   channelId: string
   currentTime?: number
 }
+
+export enum Direction {
+  PREV,
+  NEXT,
+}
