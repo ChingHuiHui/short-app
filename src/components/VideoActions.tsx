@@ -3,6 +3,7 @@ import ThumbDownIcon from '../assets/thumb-down.svg?react'
 import MessageIcon from '../assets/message.svg?react'
 import ShareIcon from '../assets/share.svg?react'
 import MoreIcon from '../assets/more.svg?react'
+import VideoAction from './VideoAction'
 
 // FUTURE: Modify real content for each action
 const ACTIONS = [
@@ -38,28 +39,29 @@ const ACTIONS = [
   },
 ]
 
-export default function VideoActions() {
+export default function VideoActions({title}: {title: string}) {
   return (
     <section>
       <nav>
         <ul className='space-y-4'>
           {
             ACTIONS.map((action) => (
-              <li key={action.name} className='relative group'>
-                <button className="flex items-center justify-center text-white bg-gray-700 hover:bg-gray-500 w-12 h-12 rounded-full">
-                  <div className='w-6 h-6'>{action.icon}</div>
-                </button>
-                { action.content && <p className='text-center text-sm text-white pt-1'>{action.content}</p> }
-                {
-                  action.helper && (
-                    <div className='pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute right-[calc(100%+0.5rem)] w-210 top-1/2 -translate-y-1/2 bg-gray-500/80 px-1 py-2 rounded'>
-                      <p className='text-xs text-white whitespace-nowrap'>{action.helper}</p>
-                     </div>
-                  )
-                }
+              <li key={action.name}>
+                <VideoAction 
+                  content={action.content} 
+                  helper={action.helper}>
+                  <button className="flex items-center justify-center text-white bg-gray-700 hover:bg-gray-500 w-12 h-12 rounded-full">
+                    <div className='w-6 h-6'>{action.icon}</div>
+                  </button>
+                </VideoAction>
               </li>
             ))
           }
+          <li>
+            <VideoAction helper={title}>
+              <button className='w-10 h-10 bg-gray-500 rounded-lg mx-auto'></button>
+            </VideoAction>
+          </li>
         </ul>
       </nav>
     </section>

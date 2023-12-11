@@ -65,6 +65,7 @@ export default function VideoList() {
                 thumbnail={short.thumbnails[0].url} 
                 id={short.videoId} 
                 isActive={activeId === short.videoId}
+                title={short.title}
               /> 
             </div>
           </section>

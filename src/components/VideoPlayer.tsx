@@ -20,9 +20,9 @@ enum STATE {
 }
 
 const VideoPlayer = memo(
-  ({ id, thumbnail, isActive }: { id: string, thumbnail: string, isActive: boolean }) => {  
+  ({ id, thumbnail, isActive, title }: { id: string, title: string, thumbnail: string, isActive: boolean }) => {  
     const [state, setState] = useState(STATE.PAUSED)
-    const [volume, setVolume] = useState(VOLUME.ON)
+    const [volume, setVolume] = useState(VOLUME.OFF)
 
     const [currentTime, setCurrentTime] = useState(0)
     const [showControls, setShowControls] = useState(false)
@@ -99,7 +99,7 @@ const VideoPlayer = memo(
           </div>
           </div>
         <div>
-          <VideoActions />  
+          <VideoActions title={title}/>  
         </div>
       </div>
   )
