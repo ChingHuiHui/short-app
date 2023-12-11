@@ -21,7 +21,7 @@ enum STATE {
 const VideoPlayer = memo(
   ({ id, thumbnail, isActive, title }: { id: string, title: string, thumbnail: string, isActive: boolean }) => {  
     const [state, setState] = useState(STATE.PAUSED)
-    const [volume, setVolume] = useState(VOLUME.OFF)
+    const [volume, setVolume] = useState(VOLUME.ON)
     
     const [currentTime, setCurrentTime] = useState(0)
     const [isReady, setIsReady] = useState(false)
