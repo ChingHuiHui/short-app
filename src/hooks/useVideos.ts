@@ -1,7 +1,7 @@
-import useSWR from 'swr'
 import { useState, useMemo } from 'react'
 import { useVideosStore } from '../stores/useVideosStore'
 import { useSearchParams } from 'react-router-dom'
+import useSWR from 'swr'
 
 const LOAD_MORE_PER_TIME = 10
 
@@ -31,5 +31,12 @@ export function useVideos() {
     setSearchParams({ id })
   }
 
-  return { displayVideos, load, activeId, setActiveId }
+  return { displayVideos, load, activeId, setActiveId, useFetchVideos }
+}
+
+export function useFetchVideos() {
+  const fetcher = useVideosStore((state) => state.fetcher)
+  const { isLoading } = useSWR('/videos', fetcher)
+
+  return { isLoading }
 }

@@ -10,3 +10,8 @@ main {
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
+
+.full-screen-center {
+  @apply fixed inset-0 flex justify-center items-center;
+
+}

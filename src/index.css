@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FUTURE: Auto Mode */
 html, body {
   @apply bg-white text-black dark:bg-black dark:text-white;
 
