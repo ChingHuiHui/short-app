@@ -50,6 +50,7 @@ FLOW：Loading (fetch videos) -> Click to start -> View video (Infinite Scrollin
     - Remember to disconnect the observer on cleanup
     - Forgot to set empty array on useEffect
   - [x] Video stored current time, when back to the video and done playing, the video will play from the current time not from the beginning
+  - [ ] Autoplay on mobile need to mute the video
 
 - TODO(FUTURE)
   - [x] light / dark mode (NOW: only dark mode)

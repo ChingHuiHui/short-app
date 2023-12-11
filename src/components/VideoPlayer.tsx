@@ -72,7 +72,7 @@ const VideoPlayer = memo(
               {
                 isActive && (
                   <ReactPlayer  
-                  ref={player}
+                    ref={player}
                     playing={isPlaying}
                     volume={volume}
                     config={{
@@ -90,7 +90,7 @@ const VideoPlayer = memo(
                     onPause={() => setState(STATE.PAUSED)}
                     onProgress={track} 
                     onEnded={replay}
-                  />
+                    />
                 )
               }
             </div>
