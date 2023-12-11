@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef} from 'react'
 import { useVideos } from '../hooks/useVideos'
 import VideoPlayer from './VideoPlayer'
-import { Direction } from '../type.d.ts'
+import { Direction } from '../type.ts'
 import VideosControls from './VideosControls'
 
 export default function VideoList() {

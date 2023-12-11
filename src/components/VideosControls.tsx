@@ -1,6 +1,6 @@
 import ArrowUpIcon from '../assets/arrow-up.svg?react'
 import ArrowDownIcon from '../assets/arrow-down.svg?react'
-import { Direction } from '../type.d.ts'
+import { Direction } from '../type.ts'
 
 export default function VideosControls({ scrollTo, isFirst, isLast }: 
   { scrollTo: (direction: Direction) => void, isFirst: boolean, isLast: boolean}) {
