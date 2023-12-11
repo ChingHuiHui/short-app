@@ -4,6 +4,10 @@ main {
   overflow-y: scroll;
 }
 
+main::-webkit-scrollbar {
+  display: none;
+}
+
 .section {
   @apply dark:bg-black flex justify-center items-center;
 
