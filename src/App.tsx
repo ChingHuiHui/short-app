@@ -7,15 +7,13 @@ import { useFetchVideos } from './hooks/useVideos'
 export default function App() {
   useDarkMode()
   
-  const { isLoading } = useFetchVideos()
-  
   const [start, setStart] = useState(false)
 
+  const { isLoading } = useFetchVideos()
 
   if(isLoading) {
     return <div className='full-screen-center'>Loading...</div>
   }
-  
 
   return (
     <div>
