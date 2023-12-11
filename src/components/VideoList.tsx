@@ -1,4 +1,4 @@
-import { useEffect, useRef} from 'react'
+import { useEffect, useMemo, useRef} from 'react'
 import { useVideos } from '../hooks/useVideos'
 import VideoPlayer from './VideoPlayer'
 import { Direction } from '../type.d.ts'
@@ -54,9 +54,10 @@ export default function VideoList() {
     }
   }, [])
 
-  function scrollTo(direction: Direction) {
-    const currIndex = videoIndexDir[activeId]
 
+  const currIndex = useMemo(() => videoIndexDir[activeId], [videoIndexDir, activeId])
+
+  function scrollTo(direction: Direction) {
     if(!currIndex && currIndex !== 0) return
 
     const targetIndex = direction === Direction.PREV ? currIndex - 1 : currIndex + 1    
@@ -70,7 +71,11 @@ export default function VideoList() {
 
   return (
     <main> 
-      <VideosControls scrollTo={scrollTo}/>
+      <VideosControls
+        scrollTo={scrollTo} 
+        isLast={currIndex === videos.length -1 } 
+        isFirst={currIndex === 0}
+      />
       {
         displayVideos.map((short) => (
           <section key={short.videoId} className="section">
