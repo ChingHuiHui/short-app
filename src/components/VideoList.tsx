@@ -5,7 +5,7 @@ import { Direction } from '../type.d.ts'
 import VideosControls from './VideosControls'
 
 export default function VideoList() {
-  const { activeId, setActiveId, displayVideos, load, videos } = useVideos()
+  const { activeId, setActiveId, displayVideos, load, videos, videoIndexDir } = useVideos()
 
   const list = useRef<{[key: string]: HTMLDivElement}>({})
 
@@ -55,9 +55,9 @@ export default function VideoList() {
   }, [])
 
   function scrollTo(direction: Direction) {
-    const currIndex = videos.findIndex(video => video.videoId === activeId)
+    const currIndex = videoIndexDir[activeId]
 
-    if(currIndex < 0) return
+    if(!currIndex && currIndex !== 0) return
 
     const targetIndex = direction === Direction.PREV ? currIndex - 1 : currIndex + 1    
     const targetId = videos[targetIndex]?.videoId

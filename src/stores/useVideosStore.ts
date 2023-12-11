@@ -4,6 +4,7 @@ import type { Short } from '../type'
 
 interface VideosState {
   videos: Short[]
+  videoIndexDir: Record<Short['videoId'], number>
   fetcher: () => Promise<Short[]>
 }
 
@@ -13,6 +14,7 @@ const URL = `https://yt.lemnoslife.com/channels?part=shorts&id=${CHANNEL_ID}`
 export const useVideosStore = create<VideosState>()(
   devtools((set) => ({
     videos: [],
+    videoIndexDir: {},
     fetcher: async () => {
       const data = await fetch(URL)
       const res = await data.json()
@@ -22,8 +24,14 @@ export const useVideosStore = create<VideosState>()(
         currentTime: 0,
       }))
 
+      const videoIndexDir = videos.reduce(
+        (acc, cur, index) => ({ ...acc, [cur.videoId]: index }),
+        {}
+      )
+
       set({
         videos,
+        videoIndexDir,
       })
 
       return videos
