@@ -37,7 +37,9 @@ const router = createBrowserRouter([
       </React.StrictMode>
     )
   }
-]);
+], {
+  basename: "/short-app/"
+});
 
 ReactDOM.createRoot(document.getElementById("root")  as HTMLElement).render(
   <RouterProvider router={router} />
