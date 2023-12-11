@@ -1,3 +1,12 @@
+## APP
+
+Check the APP: [click here](https://chinghuihui.github.io/short-app/)
+
+- Use GitHub Actions for deployment
+- Deploy on GitHub Pages
+
+FLOW：Loading (fetch videos) -> Click to start -> View video (Infinite Scrolling)
+
 ## HOW TO OPEN?
 
 1. git clone
@@ -8,12 +17,19 @@
 
 > Create YouTube Short Page (**DESKTOP WEBSITE**) using **React**
 
-- Video List
+- APP
+
   - [x] Fetch all shorts from [「THE FIRST TAKE」](https://www.youtube.com/@The_FirstTake) channel
+  - [x] Loading Page
+  - [x] Starting Page
+
+- Video List
+
   - [x] Load More (Infinite Scrolling)
   - Scroll and change active video
     - [x] One swing scroll one section.
     - [x] Play next video and pause current one
+
 - Short(video)
 
   - [x] Basic layout
