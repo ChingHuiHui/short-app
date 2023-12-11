@@ -9,9 +9,19 @@ FLOW：Loading (fetch videos) -> Click to start -> View video (Infinite Scrollin
 
 ## HOW TO OPEN?
 
+### Clone
+
 1. git clone
 2. cd ~/short-app
 3. yarn && yarn dev
+4. open http://localhost:5173/short-app/
+
+### Docker
+
+1. cd ~/short-app
+2. docker build -t short-app .
+3. docker run -p 5173:5173 short-app
+4. open http://localhost:5173/short-app/
 
 ## FEATURES
 
