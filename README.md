@@ -1,7 +1,7 @@
 ## HOW TO OPEN?
 
 1. git clone
-2. cd ~/alion-react-app
+2. cd ~/short-app
 3. yarn && yarn dev
 
 ## FEATURES
@@ -26,7 +26,7 @@
 
 - Deployment
 
-  - [] deploy the website
+  - [ ] deploy the website
 
 - FIXME
 
