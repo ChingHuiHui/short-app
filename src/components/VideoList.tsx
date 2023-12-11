@@ -80,6 +80,7 @@ export default function VideoList() {
         displayVideos.map((short) => (
           <section key={short.videoId} className="section">
             <div 
+              className='w-full md:w-fit'
               ref={ref => list.current[short.videoId] = ref as HTMLDivElement} 
               data-id={short.videoId}>
                 <VideoPlayer 

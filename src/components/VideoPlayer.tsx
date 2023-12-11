@@ -61,10 +61,13 @@ const VideoPlayer = memo(
     }
     
     return (
-      <div className="flex items-end mb-10 space-x-4">
-        <div className='group'>
-          <div className="aspect-[4/7] w-[20rem] relative rounded-lg overflow-hidden">
-            <div  className='absolute inset-0' style={{backgroundImage: `url(${thumbnail})`, display: isActive && isReady ? 'none': 'block'}}></div>
+      <div className="flex items-end mb-10 space-x-4 relative">
+        <div className='group w-full'>
+          <div className="w-full h-[100dvh] relative rounded-lg overflow-hidden md:h-auto md:w-[20rem] md:aspect-[4/7]">
+            <div 
+              className='absolute inset-0 bg-no-repeat bg-cover bg-center' 
+              style={{backgroundImage: `url(${thumbnail})`, display: isActive && isReady ? 'none': 'block'}}
+            />
             <div className='absolute inset-0'>
               {
                 isActive && (
@@ -91,23 +94,25 @@ const VideoPlayer = memo(
                 )
               }
             </div>
-            {isReady && <nav className="opacity-0 group-hover:opacity-100 p-4 pt-8 absolute bottom-0 w-full text-white bg-gradient-to-t from-black/70 to-transparent rounded-lg">
-              <ul className="flex justify-between">
-                <li>
-                  <button className="w-6 h-6" onClick={toggleState}>
-                    {isPlaying ? <PauseIcon/> : <PlayIcon />}
-                  </button>
-                </li>
-                <li>
-                  <button className="w-6 h-6" onClick={toggleVolume}>
-                    {volume === 0 ? <VolumeOff /> : <VolumeOn/>}
-                  </button>
-                </li>
-              </ul>
-            </nav>}
+            { isReady && 
+              <nav className="opacity-0 group-hover:opacity-100 p-4 pt-8 absolute bottom-0 w-full text-white bg-gradient-to-t from-black/70 to-transparent rounded-lg">
+                <ul className="flex justify-between">
+                  <li>
+                    <button className="w-6 h-6" onClick={toggleState}>
+                      {isPlaying ? <PauseIcon/> : <PlayIcon />}
+                    </button>
+                  </li>
+                  <li>
+                    <button className="w-6 h-6" onClick={toggleVolume}>
+                      {volume === 0 ? <VolumeOff /> : <VolumeOn/>}
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            }
           </div>
-          </div>
-        <div>
+        </div>
+        <div className='absolute right-6 bottom-6 md:static'>
           <VideoActions title={title}/>  
         </div>
       </div>

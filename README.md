@@ -55,6 +55,7 @@ FLOW：Loading (fetch videos) -> Click to start -> View video (Infinite Scrollin
   - [x] light / dark mode (NOW: only dark mode)
   - [x] Error handling (e.g. video is not available)
   - [x] Controls for changing video (prev/next)
+  - [ ] Responsive. (for mobile)
   - [ ] Get real content for each action of video.
   - [ ] Customize the video player (remove the default info)
   - [ ] Enter id query on url can access the video directly

@@ -5,7 +5,7 @@ import { Direction } from '../type.ts'
 export default function VideosControls({ scrollTo, isFirst, isLast }: 
   { scrollTo: (direction: Direction) => void, isFirst: boolean, isLast: boolean}) {
   return (
-    <section className='fixed top-0 bottom-0 right-0 flex flex-col justify-between px-4 py-2'>
+    <section className='fixed top-0 bottom-0 right-0 flex-col justify-between px-4 py-2 hidden md:flex'>
         <button 
           disabled={isFirst} 
           style={{ opacity: isFirst ? '0' : '100'}} 

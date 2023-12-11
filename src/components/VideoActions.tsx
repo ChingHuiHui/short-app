@@ -46,7 +46,7 @@ export default function VideoActions({title}: {title: string}) {
         <ul className='space-y-4'>
           {
             ACTIONS.map((action) => (
-              <li key={action.name}>
+              <li key={action.name} className='drop-shadow-2xl'>
                 <VideoAction 
                   content={action.content} 
                   helper={action.helper}>
