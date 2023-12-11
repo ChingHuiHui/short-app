@@ -22,7 +22,7 @@ main::-webkit-scrollbar {
 
 .rounded-btn {
   @apply w-12 h-12 rounded-full flex items-center justify-center;
-  @apply text-white bg-gray-700 hover:bg-gray-500;
+  @apply bg-white/10 shadow-lg text-white md:bg-gray-700 md:hover:bg-gray-500;
 }
 
 .lg-btn {
