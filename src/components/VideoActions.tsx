@@ -5,7 +5,6 @@ import ShareIcon from '../assets/share.svg?react'
 import MoreIcon from '../assets/more.svg?react'
 import VideoAction from './VideoAction'
 
-// FUTURE: Modify real content for each action
 const ACTIONS = [
   {
     name: 'thumbs-up',
@@ -39,7 +38,7 @@ const ACTIONS = [
   },
 ]
 
-export default function VideoActions({title}: {title: string}) {
+export default function VideoActions({ title }: { title: string }) {
   return (
     <section>
       <nav>

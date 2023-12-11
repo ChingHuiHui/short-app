@@ -54,7 +54,6 @@ export default function VideoList() {
     }
   }, [])
 
-
   const currIndex = useMemo(() => videoIndexDir[activeId], [videoIndexDir, activeId])
 
   function scrollTo(direction: Direction) {

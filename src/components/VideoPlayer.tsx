@@ -18,8 +18,15 @@ enum STATE {
   PAUSED
 }
 
+interface VideoPlayerProps {
+  id: string
+  thumbnail: string
+  isActive: boolean
+  title: string
+}
+
 const VideoPlayer = memo(
-  ({ id, thumbnail, isActive, title }: { id: string, title: string, thumbnail: string, isActive: boolean }) => {  
+  ({ id, thumbnail, isActive, title }: VideoPlayerProps) => {  
     const [state, setState] = useState(STATE.PAUSED)
     const [volume, setVolume] = useState(VOLUME.ON)
     

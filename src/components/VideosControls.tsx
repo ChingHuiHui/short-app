@@ -2,8 +2,13 @@ import ArrowUpIcon from '../assets/arrow-up.svg?react'
 import ArrowDownIcon from '../assets/arrow-down.svg?react'
 import { Direction } from '../type.ts'
 
-export default function VideosControls({ scrollTo, isFirst, isLast }: 
-  { scrollTo: (direction: Direction) => void, isFirst: boolean, isLast: boolean}) {
+interface VideosControlsProps {
+  scrollTo: (direction: Direction) => void
+  isFirst: boolean
+  isLast: boolean
+}
+
+export default function VideosControls({ scrollTo, isFirst, isLast }: VideosControlsProps){
   return (
     <section className='fixed top-0 bottom-0 right-0 flex-col justify-between px-4 py-2 hidden md:flex'>
         <button 
