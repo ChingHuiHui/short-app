@@ -26,7 +26,7 @@
 
 - Deployment
 
-  - [ ] deploy the website
+  - [x] deploy the website
 
 - FIXME
 
@@ -38,10 +38,11 @@
 - TODO(FUTURE)
   - [x] light / dark mode (NOW: only dark mode)
   - [x] Error handling (e.g. video is not available)
+  - [x] Controls for changing video (prev/next)
   - [ ] Get real content for each action of video.
   - [ ] Customize the video player (remove the default info)
-  - [ ] Enter id query on url can access the video directly.
-  - [ ] User can search different short list of different channel.
+  - [ ] Enter id query on url can access the video directly
+  - [ ] User can search different short list of different channel
 
 ## TOOLS
 
