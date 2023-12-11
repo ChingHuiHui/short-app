@@ -1,30 +1,52 @@
-# React + TypeScript + Vite
+## HOW TO OPEN?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. git clone
+2. cd ~/alion-react-app
+3. yarn && yarn dev
 
-Currently, two official plugins are available:
+## FEATURES
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Create YouTube Short Page (**DESKTOP WEBSITE**) using **React**
 
-## Expanding the ESLint configuration
+- Video List
+  - [x] Fetch all shorts from [「THE FIRST TAKE」](https://www.youtube.com/@The_FirstTake) channel
+  - [x] Load More (Infinite Scrolling)
+  - Scroll and change active video
+    - [x] One swing scroll one section.
+    - [x] Play next video and pause current one
+- Short(video)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - [x] Basic layout
+  - [x] Sidebar for action buttons
+  - player
+    - [x] Play / Pause
+    - [x] Mute / UnMute
+    - [x] Loop
+    - [x] Store / Resume the current time
 
-- Configure the top-level `parserOptions` property like this:
+- Deployment
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+  - [] deploy the website
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- FIXME
+
+  - [x] When touch the target element will load multi times.
+    - Remember to disconnect the observer on cleanup
+    - Forgot to set empty array on useEffect
+  - [x] Video stored current time, when back to the video and done playing, the video will play from the current time not from the beginning
+
+- TODO(FUTURE)
+  - [x] light / dark mode (NOW: only dark mode)
+  - [x] Error handling (e.g. video is not available)
+  - [ ] Get real content for each action of video.
+  - [ ] Customize the video player (remove the default info)
+  - [ ] Enter id query on url can access the video directly.
+  - [ ] User can search different short list of different channel.
+
+## TOOLS
+
+- [React](https://github.com/facebook/react) + [TypeScript](https://github.com/microsoft/TypeScript)
+- [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) css library
+- [react-player](https://github.com/CookPete/react-player) for YouTube Player
+- [zustand](https://github.com/pmndrs/zustand) for state management
+- [react-router](https://github.com/remix-run/react-router) for get/set url params
