@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html, body {
   @apply bg-white text-black dark:bg-black dark:text-white;
 
@@ -11,6 +12,3 @@ html, body {
   scroll-behavior: smooth;
 }
 
-svg {
-  @apply w-full h-full;
-}

@@ -50,7 +50,7 @@ export default function VideoActions({title}: {title: string}) {
                 <VideoAction 
                   content={action.content} 
                   helper={action.helper}>
-                  <button className="flex items-center justify-center text-white bg-gray-700 hover:bg-gray-500 w-12 h-12 rounded-full">
+                  <button className="rounded-btn">
                     <div className='w-6 h-6'>{action.icon}</div>
                   </button>
                 </VideoAction>

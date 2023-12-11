@@ -15,3 +15,17 @@ main {
   @apply fixed inset-0 flex justify-center items-center;
 
 }
+
+.rounded-btn {
+  @apply w-12 h-12 rounded-full flex items-center justify-center;
+  @apply text-white bg-gray-700 hover:bg-gray-500;
+}
+
+.lg-btn {
+  @apply w-14 h-14;
+}
+
+
+.rounded-btn svg {
+  @apply w-6 h-6;
+}
