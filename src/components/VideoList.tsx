@@ -37,21 +37,20 @@ export default function VideoList() {
   const loadMoreTarget = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    function observeLoadMoreTarget() {
-      const loadObserver = new IntersectionObserver(
-        (entries) => {
-          if(!entries[0].isIntersecting) return
-            
-          load()
-        },
-        { threshold: 0.5 }
-      )
-  
-      loadObserver.observe(loadMoreTarget.current as HTMLDivElement)
-    }
+    const loadObserver = new IntersectionObserver(
+      (entries) => {
+        if(!entries[0].isIntersecting) return
+          
+        load()
+      },      
+    )
 
-    observeLoadMoreTarget()
-  })
+    loadObserver.observe(loadMoreTarget.current as HTMLDivElement)
+
+    return () => {
+      loadObserver && loadObserver.disconnect()
+    }
+  }, [])
 
   return (
     <main> 
@@ -61,17 +60,16 @@ export default function VideoList() {
             <div 
               ref={ref => list.current[short.videoId] = ref as HTMLDivElement} 
               data-id={short.videoId}>
-              <VideoPlayer 
-                thumbnail={short.thumbnails[0].url} 
-                id={short.videoId} 
-                isActive={activeId === short.videoId}
-                title={short.title}
-              /> 
+                <VideoPlayer 
+                  thumbnail={short.thumbnails[0].url} 
+                  id={short.videoId} 
+                  isActive={activeId === short.videoId}
+                  title={short.title}
+                /> 
             </div>
           </section>
       ))}
-      {/* FIXME: load times */}
-      <div ref={loadMoreTarget} className='bg-red-100 h-[100px]'></div>
+      <div ref={loadMoreTarget} className='h-10'></div>
     </main>
   )
 }

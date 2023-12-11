@@ -3,18 +3,15 @@ import { useVideosStore } from '../stores/useVideosStore'
 import { useSearchParams } from 'react-router-dom'
 import useSWR from 'swr'
 
-const LOAD_MORE_PER_TIME = 10
+const LOAD_MORE_PER_TIME = 5
 
 export function useVideos() {
-  const fetcher = useVideosStore((state) => state.fetch)
-  useSWR('/videos', fetcher, { suspense: true })
-
   const videos = useVideosStore((state) => state.videos)
 
   const [loadMore, setLoadMore] = useState(1)
 
   const displayVideos = useMemo(() => {
-    return videos.slice(0, loadMore * (LOAD_MORE_PER_TIME / 2))
+    return videos.slice(0, loadMore * LOAD_MORE_PER_TIME)
   }, [videos, loadMore])
 
   const load = () => {
